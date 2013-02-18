@@ -57,7 +57,3 @@ a + |b|
 (f n) = 2n
 (g n) = 2^n
 (h n) = 2^(h (- n 1)) - [2^2]^n раз (2 в степени 2 n раз)
-
-
-
-http://slady.net/java/bt/view.php?w=1024&h=768
