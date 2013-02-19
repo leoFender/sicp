@@ -8,13 +8,13 @@
        ( * a a))
   
      (define (improve guess x)
-       (/ (+ (/ x (square guess)) (* 2 guess)) 3))
+       (/ (+ (/ (abs x) (square guess)) (* 2 guess)) 3))
   
      (define (good-enough? guess guess_prev)
        (< (/ (abs (- guess_prev guess)) guess_prev) 0.0001))
   
      (if (good-enough? guess guess_prev)
-         guess
+         ((if (< x 0) - +) guess)
          (cbrt-iter guess (improve guess x) x)))
   
   (cbrt-iter 1 2 x))
