@@ -1,6 +1,6 @@
 #lang racket
-(define (sqrt x)
-  (define (sqrt-iter guess_prev guess x)
+(define (cbrt x)
+  (define (cbrt-iter guess_prev guess x)
      (define (average x y)
        (/ (+ x y) 2))
      
@@ -11,12 +11,12 @@
        (/ (+ (/ x (square guess)) (* 2 guess)) 3))
   
      (define (good-enough? guess guess_prev)
-       (< (abs (- guess_prev guess)) 0.00001))
+       (< (/ (abs (- guess_prev guess)) guess_prev) 0.0001))
   
      (if (good-enough? guess guess_prev)
          guess
-         (sqrt-iter guess (improve guess x) x)))
+         (cbrt-iter guess (improve guess x) x)))
   
-  (sqrt-iter 0 1 x))
+  (cbrt-iter 1 2 x))
    
    
