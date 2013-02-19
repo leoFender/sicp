@@ -17,6 +17,8 @@
          ((if (< x 0) - +) guess)
          (cbrt-iter guess (improve guess x) x)))
   
-  (cbrt-iter 1 2 x))
+  (if (= x 0)
+      0
+      (cbrt-iter 1 2 x)))
    
    

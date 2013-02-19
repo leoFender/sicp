@@ -17,6 +17,8 @@
          guess
          (sqrt-iter guess (improve guess x) x)))
   
-  (sqrt-iter 1 2 x))
+  (if (= x 0)
+      0
+      (sqrt-iter 1 2 x)))
    
    
