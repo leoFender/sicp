@@ -11,14 +11,14 @@
        (average guess (/ x guess)))
   
      (define (good-enough? guess guess_prev)
-       (< (/ (abs (- guess_prev guess)) guess_prev) 0.0001))
+       (if (= guess 0)
+           #t
+           (< (/ (abs (- guess_prev guess)) guess_prev) 0.001)))
   
      (if (good-enough? guess guess_prev)
          guess
          (sqrt-iter guess (improve guess x) x)))
   
-  (if (= x 0)
-      0
-      (sqrt-iter 1 2 x)))
+      (sqrt-iter 1 0.1 x))
    
    
