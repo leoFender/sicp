@@ -1,5 +1,6 @@
 #lang racket
 (define (cbrt x)
+  (define eps 0.0001)
   (define (cbrt-iter guess_prev guess x)
      (define (average x y)
        (/ (+ x y) 2))
@@ -11,9 +12,9 @@
        (/ (+ (/ (abs x) (square guess)) (* 2 guess)) 3))
   
      (define (good-enough? guess guess_prev)
-       (if (= guess 0)
+       (if (< (abs guess) eps)
            #t
-           (< (/ (abs (- guess_prev guess)) guess_prev) 0.0001)))
+           (< (/ (abs (- guess_prev guess)) guess_prev) eps)))
   
      (if (good-enough? guess guess_prev)
          ((if (< x 0) - +) guess)

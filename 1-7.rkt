@@ -1,5 +1,6 @@
 #lang racket
 (define (sqrt x)
+  (define eps 0.0001)
   (define (sqrt-iter guess_prev guess x)
      (define (average x y)
        (/ (+ x y) 2))
@@ -11,9 +12,9 @@
        (average guess (/ x guess)))
   
      (define (good-enough? guess guess_prev)
-       (if (= guess 0)
+       (if (< (abs guess) eps)
            #t
-           (< (/ (abs (- guess_prev guess)) guess_prev) 0.001)))
+           (< (/ (abs (- guess_prev guess)) guess_prev) eps)))
   
      (if (good-enough? guess guess_prev)
          guess
