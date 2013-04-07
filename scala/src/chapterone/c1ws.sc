@@ -67,4 +67,27 @@ object c1ws {
 	cbrt(-27)                                 //> res8: Double = -3.0000000000000977
 	cbrt(1e-17)                               //> res9: Double = 7.856976819935529E-6
 	cbrt(793849147)                           //> res10: Double = 925.9324989245429
+	
+	//
+	//1.11
+	//
+	def someFunctionRec(x: Double): Double =
+		if (x < 3) x
+		else someFunctionRec(x-1) + someFunctionRec(x-2) + someFunctionRec(x-3)
+                                                  //> someFunctionRec: (x: Double)Double
+		
+	def someFunctionIter(n: Double) = {
+		
+		def fI(x: Double, x1: Double, x2: Double, x3: Double): Double =
+			if (x	== n) x1 + x2 + x3
+			else fI (x+1, x1 + x2 + x3, x1, x2)
+			
+		if (n < 3) n else fI (3, 2, 1, 0)
+	}                                         //> someFunctionIter: (n: Double)Double
+	
+	someFunctionRec(2)                        //> res11: Double = 2.0
+	someFunctionRec(5)                        //> res12: Double = 11.0
+	someFunctionIter(2)                       //> res13: Double = 2.0
+	someFunctionIter(5)                       //> res14: Double = 11.0
+	
 }

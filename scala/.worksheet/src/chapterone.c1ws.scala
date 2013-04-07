@@ -64,5 +64,27 @@ object c1ws {;import org.scalaide.worksheet.runtime.library.WorksheetSupport._; 
 	cbrt(0);System.out.println("""res7: Double = """ + $show(res$7));$skip(11); val res$8 = 
 	cbrt(-27);System.out.println("""res8: Double = """ + $show(res$8));$skip(13); val res$9 = 
 	cbrt(1e-17);System.out.println("""res9: Double = """ + $show(res$9));$skip(17); val res$10 = 
-	cbrt(793849147);System.out.println("""res10: Double = """ + $show(res$10))}
+	cbrt(793849147);System.out.println("""res10: Double = """ + $show(res$10));$skip(149); 
+	
+	//
+	//1.11
+	//
+	def someFunctionRec(x: Double): Double =
+		if (x < 3) x
+		else someFunctionRec(x-1) + someFunctionRec(x-2) + someFunctionRec(x-3);System.out.println("""someFunctionRec: (x: Double)Double""");$skip(219); 
+		
+	def someFunctionIter(n: Double) = {
+		
+		def fI(x: Double, x1: Double, x2: Double, x3: Double): Double =
+			if (x	== n) x1 + x2 + x3
+			else fI (x+1, x1 + x2 + x3, x1, x2)
+			
+		if (n < 3) n else fI (3, 2, 1, 0)
+	};System.out.println("""someFunctionIter: (n: Double)Double""");$skip(22); val res$11 = 
+	
+	someFunctionRec(2);System.out.println("""res11: Double = """ + $show(res$11));$skip(20); val res$12 = 
+	someFunctionRec(5);System.out.println("""res12: Double = """ + $show(res$12));$skip(21); val res$13 = 
+	someFunctionIter(2);System.out.println("""res13: Double = """ + $show(res$13));$skip(21); val res$14 = 
+	someFunctionIter(5);System.out.println("""res14: Double = """ + $show(res$14))}
+	
 }
